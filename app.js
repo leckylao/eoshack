@@ -57,3 +57,12 @@ bioApp.controller('submitCtrl', function ($scope,$location) {
     }
 
 });
+
+bioApp.controller('profilePageCtrl', function ($scope, $interval, $location){
+  var result = eos.getAccount("alice1111111" );
+  result.then(function (data){
+    $scope.$apply(function(){
+      $scope.data = data;
+    })
+  })
+});

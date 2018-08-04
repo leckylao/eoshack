@@ -23,6 +23,9 @@
 
 <div ng-app="bioApp" class="page">
   <div ng-controller="submitCtrl" class="query-form">
+    <div class="label-helper">
+      Upload an image
+    </div>
     <div class="image-array">
       <div class="image-box">
         <i class="fas fa-plus"></i>
@@ -40,8 +43,8 @@
       <select ng-options="category as category for category in categories" ng-model="selectedCategory"></select>
     </div>
     <div class="element-name">
-      guess a name
-      <input type="text"/>
+      <div class="label-helper">guess a name</div>
+      <input class="sample-name-input" type="text"/>
     </div>
 
     <button>submit</button>

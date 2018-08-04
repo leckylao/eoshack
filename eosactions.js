@@ -29,9 +29,9 @@ var actions = {
                         user: userID,
                         longitude:longitude,
                         latitude:latitude,
-                        sampleName:sampleName,
-                        sampleCategory:sampleCategory,
-                        image:image
+                        sample_name:sampleName,
+                        sample_category:sampleCategory,
+                        image:[image]
                     }
                 }
             ]

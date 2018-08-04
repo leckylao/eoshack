@@ -2,6 +2,17 @@ body,html{
     width: 100%;
 }
 
+.nav-bar {
+    height: 80px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 40px;
+    line-height: 40px;
+}
+
 .query-form {
     max-width: 600px;
     border-radius: 1px;

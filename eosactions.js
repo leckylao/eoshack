@@ -60,11 +60,11 @@ var ACTIONS = {
                     account: config.CONTRACT_NAME,
                     name: 'verify',
                     authorization: [{
-                        actor: config.EXPERT_ACCOUNT_NAME_1,
+                        actor: config.ACTIVE_EXPERT,
                         permission: 'active'
                     }],
                     data: {
-                        expert: config.EXPERT_ACCOUNT_NAME_1, // acccount name
+                        expert: config.ACTIVE_EXPERT, // acccount name
                         id: id, // requesttable id
                         result: result,// 1 0
                         sample_name: sample_name,

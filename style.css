@@ -8,7 +8,7 @@
     width: 100%;
     padding: 5px;
     background-color: yellow;
-    height: 80px;
+    height: 90px;
 }
 
 .image-box {
@@ -21,9 +21,7 @@
     float: left;
 }
 
-.image-box:after{
-    clear:both;
-}
+
 .image-box i{
     font-size: 50px;
     line-height: 50px;
@@ -32,4 +30,8 @@
     top: 50%;
     margin-top: -25px;
     margin-left: -20px;
+}
+.select-category {
+    width: 100%;
+    background-color: black;
 }

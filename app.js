@@ -100,6 +100,15 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
 
 });
 
+bioApp.controller('profilePageCtrl', function ($scope, $interval, $location){
+  var result = eos.getAccount("alice1111111" );
+  result.then(function (data){
+    $scope.$apply(function(){
+      $scope.data = data;
+    })
+  })
+});
+
 bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
 
     var url = 'http://172.16.97.1:8000';

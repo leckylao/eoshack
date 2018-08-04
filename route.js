@@ -25,6 +25,11 @@ bioApp.config(function ($routeProvider) {
                 return 'verify.html';
             }
         })
+        .when('/user/profile', {
+            templateUrl: function () {
+                return 'profile.html';
+            }
+        })
         .otherwise({
             redirectTo: '/'
         });

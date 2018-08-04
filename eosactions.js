@@ -101,5 +101,8 @@ var ACTIONS = {
     },
     executeTransaction: function (transaction) {
         eos.transaction(transaction);
+    },
+    getAccount: async function (accountName) {
+      return eos.getAccount(accountName);
     }
 };

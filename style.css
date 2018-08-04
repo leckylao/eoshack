@@ -1,7 +1,13 @@
+body,html{
+    width: 100%;
+}
+
 .query-form {
-    width: 600px;
+    max-width: 600px;
     border-radius: 1px;
     border: 1px solid black;
+    padding: 5px;
+    margin: auto;
 }
 
 .image-array{
@@ -33,5 +39,4 @@
 }
 .select-category {
     width: 100%;
-    background-color: black;
 }

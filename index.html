@@ -13,11 +13,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
         integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="page">
-  <div class="query-from">
+
+<div class="nav-bar">
+  Bio Coin
+</div>
+
+<div ng-app="bioApp" class="page">
+  <div ng-controller="submitCtrl" class="query-form">
     <div class="image-array">
       <div class="image-box">
         <i class="fas fa-plus"></i>
@@ -28,8 +33,22 @@
       <div class="image-box">
         <i class="fas fa-plus"></i>
       </div>
+      <div style="clear:both;"></div>
     </div>
+    <div class="select-category">
+      select a category
+      <select ng-options="category as category for category in categories" ng-model="selectedCategory"></select>
+    </div>
+    <div class="element-name">
+      guess a name
+      <input type="text"/>
+    </div>
+
+    <button>submit</button>
+    <button>cancel</button>
   </div>
+
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.0/lib/eos.min.js"

@@ -14,7 +14,7 @@ eos = Eos({
 console.log(eos.getInfo({}));
 
 var actions = {
-    submitEx: function (userID, geoLon, geoLat, name, category, picturePass, geoInfo) {
+    submit: function (userID, longitude, latitude, sampleName, sampleCategory, image) {
         var transaction = {
             // ...headers,
             actions: [
@@ -27,22 +27,24 @@ var actions = {
                     }],
                     data: {
                         user: userID,
-                        longtitude: geoLon,
-                        latitude:
-                        // to: 'initb',
-                        // quantity: '7.0000 SYS',
-                        // memo: ''
+                        longitude:longitude,
+                        latitude:latitude,
+                        sampleName:sampleName,
+                        sampleCategory:sampleCategory,
+                        image:image
                     }
                 }
             ]
         };
+        this.executeTransaction(transaction);
     },
     submitAI: function () {
 
         // mockAI
 
     },
-    claim: function (userID) {
+    // checks the result for all requests
+    check: function (userID) {
         var transaction = {
             actions: [
                 {
@@ -64,6 +66,8 @@ var actions = {
             ]
         }
     },
+    verify:function () {},
+    gettask: function () {},
     testAction: function () {
         var transaction = {
             // ...headers,

@@ -34,14 +34,28 @@ bioApp.controller('requestPageCtrl', function ($scope, $interval, $location) {
 });
 
 bioApp.controller('submitCtrl', function ($scope, $location) {
-
+    var url = 'http://172.16.97.1:8000';
     var myInput = document.getElementById('myFileInput');
     myInput.addEventListener('change', sendPic, false);
+    var formData = new FormData();
+    $scope.fileName = null;
+
     function sendPic() {
         var file = myInput.files[0];
+        formData.append('file', file);
 
+
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        }).then(response => {
+            $scope.$apply(function () {
+                $scope.fileName = url + '/' + file.name;
+            });
+            console.log('** here is the response ', response);
+        });
     }
-
 
 
     // init
@@ -124,8 +138,6 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
     $scope.latitude = '';
 
     // ACTIONS.verify($scope.id, $scope.sampleName, $scope.categoryName)
-
-
 
 
     $scope.submitVerify = function () {

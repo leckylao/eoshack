@@ -69,6 +69,9 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
     $scope.longitude = 151.199505;
     $scope.latitude = -33.872791;
 
+    $scope.cancel = function () {
+        $location.path('/user/requests');
+    }
     $scope.submit = function () {
         console.log('action has been sent');
 

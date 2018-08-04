@@ -1,14 +1,17 @@
 body, html {
     width: 100%;
+    background-color: #252534;
+    color: #C0C0C8;
+    font: robotolight, UILanguageFont,sans-serif;
 }
 
 .nav-bar {
-    height: 80px;
+    height: 70px;
     width: 100%;
-    background-color: black;
+    background-color: #09091A;
     color: white;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
     font-size: 40px;
     line-height: 40px;
 }
@@ -16,25 +19,70 @@ body, html {
 .query-form {
     max-width: 600px;
     border-radius: 1px;
-    border: 1px solid black;
-    padding: 5px;
+    /*border: 1px solid black;*/
+    padding: 10px;
     margin: auto;
 }
 
-
-
 .image-box {
     position: relative;
-    margin: auto;
+    margin: 0px auto 15px auto;
     width: 300px;
     height: 300px;
     border: 1px solid black;
-    background-color: grey;
+    background-color: #09091A;
 
     /*float: left;*/
     overflow: hidden;
 }
 
+.bio-header {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.bio-select {
+    width: 100%;
+    height: 40px;
+    color: #252534;
+    background-color: #C0C0C8;
+
+}
+
+.bio-input {
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid black;
+    padding: 0px 5px 0px 5px;
+    color: #252534;
+}
+
+.bio-select:focus, .bio-input:focus,
+.bio-select:active, .bio-input:active {
+    outline: none;
+}
+
+.bio-button {
+    height: 35px;
+    width: 90px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+}
+
+.bio-button-ok{
+    background-color: #62D36E;
+    color: white;
+}
+
+.bio-button-cancel {
+    background-color: #5DB7D6;
+    color: white;
+}
 /*input[type="file"]{*/
 /*height:80px;*/
 /*}*/

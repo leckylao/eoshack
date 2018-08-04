@@ -1,13 +1,18 @@
 bioApp.config(function ($routeProvider) {
     $routeProvider
+        .when('/', {
+            templateUrl: function () {
+                return 'submit.html';
+            }
+        })
         .when('/user/requests', {
             templateUrl: function () {
-                return 'requests.html';
+                return '/requests.html';
             }
         })
         .when('/user/submit', {
             templateUrl: function () {
-                return 'submit.html';
+                return '/submit.html';
             }
         })
         .when('/experts/jobs', {
@@ -20,4 +25,7 @@ bioApp.config(function ($routeProvider) {
                 return 'verify.html';
             }
         })
+        .otherwise({
+            redirectTo: '/'
+        });
 });

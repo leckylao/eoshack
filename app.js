@@ -1,4 +1,4 @@
-var bioApp = angular.module('bioApp', []);
+var bioApp = angular.module('bioApp', ['ngRoute']);
 
 bioApp.controller('submitCtrl', function ($scope) {
     // init

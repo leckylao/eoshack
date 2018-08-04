@@ -25,6 +25,11 @@ bioApp.config(function ($routeProvider) {
                 return 'verify.html';
             }
         })
+        .when('/user/requests/:id', {
+            templateUrl: function () {
+                return 'show.html';
+            }
+        })
         .when('/user/profile', {
             templateUrl: function () {
                 return 'profile.html';

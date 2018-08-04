@@ -21,44 +21,7 @@
   Bio Coin
 </div>
 <ng-view></ng-view>
-<div ng-app="bioApp" class="page">
-  <div ng-controller="submitCtrl" class="query-form">
-    <label>
-      Upload an image
-    </label>
-    <div class="image-array">
-      <div class="image-box">
-        <i class="fas fa-plus"></i>
-      </div>
-      <div class="image-box">
-        <i class="fas fa-plus"></i>
-      </div>
-      <div class="image-box">
-        <i class="fas fa-plus"></i>
-      </div>
-      <div style="clear:both;"></div>
-    </div>
-    <div class="form-group">
-      <label for="">Select a category</label>
-      <select ng-options="category as category for category in categories" ng-model="selectedCategory"></select>
-    </div>
-    <div class="form-group">
-      <label for="guess-name">Guess a name</label>
-      <input ng-model="name" id="guess-name" class="sample-input" type="text"/>
-    </div>
 
-    <div class="form-group">
-      <label for="user-id">User ID</label>
-      <input ng-model="userID" id="user-id" class="sample-input" type="text"/>
-    </div>
-
-
-    <button ng-click="submit()">submit</button>
-    <button>cancel</button>
-  </div>
-
-
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.0/lib/eos.min.js"
         integrity="sha512-vNyLnOEb7uFmEtVbLnyZQ9/k4zckM2Vu3jJOKq6XfWEVZG0yKcjDExVN4EQ7e3F+rePWRncMolI2xFi/3qo62A=="

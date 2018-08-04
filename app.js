@@ -7,6 +7,11 @@ bioApp.controller('submitCtrl', function ($scope) {
     $scope.selectedCategory = $scope.categories[0];
     $scope.imageURL = null;
     $scope.name = null;
+    $scope.userID = null;
 
+
+    $scope.submit = function () {
+        ACTIONS.submit()
+    }
 
 });

@@ -13,7 +13,7 @@ eos = Eos({
 // test connection
 console.log(eos.getInfo({}));
 
-var actions = {
+var ACTIONS = {
     submit: function (userID, longitude, latitude, sampleName, sampleCategory, image) {
         var transaction = {
             // ...headers,

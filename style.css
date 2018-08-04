@@ -31,6 +31,7 @@ body,html{
     padding: 5px;
     background-color: yellow;
     height: 90px;
+    margin-bottom: 15px;
 }
 
 .image-box {
@@ -55,8 +56,9 @@ body,html{
 }
 .select-category {
     width: 100%;
+    margin-bottom: 15px;
 }
 
-.sample-name-input {
-    margin: 5px 0px 5px 0px;
+.sample-input {
+    /*margin: 5px 0px 5px 0px;*/
 }

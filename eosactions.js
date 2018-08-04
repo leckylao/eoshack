@@ -101,7 +101,7 @@ var ACTIONS = {
         this.executeTransaction(transaction);
     },
     executeTransaction: function (transaction) {
-        eos.transaction(transaction);
+        return eos.transaction(transaction);
     },
     getAccount: async function (accountName) {
       return eos.getAccount(accountName);

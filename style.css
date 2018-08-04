@@ -65,3 +65,20 @@ body, html {
 /*th {*/
     /*border: 1px solid black;*/
 /*}*/
+
+
+/*verify page*/
+.verify-image-box {
+    width: 400px;
+    /*height: 400px;*/
+    background-color: black;
+}
+
+.verify-image-box image {
+    width: 100%;
+    height: 100%;
+}
+.expert-page{
+    width: 100%;
+    padding: 20px;
+}

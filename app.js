@@ -127,43 +127,41 @@ bioApp.controller('profilePageCtrl', function ($scope, $interval, $location){
   })
 });
 
-bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
-
+var actions = function(scope, routeParams){
     var url = 'http://172.16.97.1:8000';
-    $scope.id = $routeParams.id;
+    scope.id = routeParams.id;
 
-    $scope.userSampleCategory = '';
-    $scope.userSampleName = '';
-    $scope.userSampleImage = '';
-    $scope.userSampleLong = '';
-    $scope.userSampleLat = '';
+    scope.userSampleCategory = '';
+    scope.userSampleName = '';
+    scope.userSampleImage = '';
+    scope.userSampleLong = '';
+    scope.userSampleLat = '';
 
-    $scope.nameStatus = 0;
-    $scope.categoryStatus = 0;
+    scope.nameStatus = 0;
+    scope.categoryStatus = 0;
 
-    $scope.sampleName = '';
-    $scope.categoryName = '';
-    $scope.remark = '';
+    scope.sampleName = '';
+    scope.categoryName = '';
+    scope.remark = '';
 
     ACTIONS.getTable().then(function (result) {
-        $scope.$apply(function () {
+        scope.$apply(function () {
             result.rows.forEach(function (row) {
 
-                if(row.id == $scope.id){
+                if(row.id == scope.id){
                     console.log('* got the row', row);
-                    $scope.userSampleCategory = row.sample_category;
-                    $scope.userSampleName = row.sample_name;
-                    $scope.userSampleImage = row.images[0];
-                    $scope.userSampleLong = row.longitude;
-                    $scope.userSampleLat = row.latitude;
-                    $scope.id = row.id;
+                    scope.userSampleCategory = row.sample_category;
+                    scope.userSampleName = row.sample_name;
+                    scope.userSampleImage = row.images[0];
+                    scope.userSampleLong = row.longitude;
+                    scope.userSampleLat = row.latitude;
+                    scope.id = row.id;
 
-
-                    $scope.imageUrl = url + '/' + $scope.userSampleImage;
-                    console.log('image url is', $scope.imageUrl);
-                    console.log('* the imageurl is', $scope.imageUrl);
-                    $scope.sampleName = $scope.userSampleName;
-                    $scope.categoryName = $scope.userSampleCategory;
+                    scope.imageUrl = url + '/' + scope.userSampleImage;
+                    console.log('image url is', scope.imageUrl);
+                    console.log('* the imageurl is', scope.imageUrl);
+                    scope.sampleName = scope.userSampleName;
+                    scope.categoryName = scope.userSampleCategory;
                 }
 
 
@@ -171,7 +169,10 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
         });
 
     });
+}
 
+bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
+    actions($scope, $routeParams);
 
     $scope.submitVerify = function () {
         ACTIONS.verify($scope.id, ($scope.nameStatus == 1 && $scope.categoryStatus == 1) ? 1 : 0, $scope.sampleName, $scope.categoryName, $scope.remark);
@@ -183,3 +184,8 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
     };
 
 });
+
+bioApp.controller('showPageCtrl', function ($scope, $interval, $location){
+    actions($scope, $routeParams);
+});
+

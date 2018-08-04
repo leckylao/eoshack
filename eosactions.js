@@ -50,21 +50,22 @@ var ACTIONS = {
 
     },
 
-    verify: function (id, sample_name, sample_category, remark) {
+    verify: function (id, result, sample_name, sample_category, remark) {
+        console.log('*verification test', id, result, sample_name, sample_category, remark);
         var transaction = {
             // ...headers,
             actions: [
                 {
                     account: config.CONTRACT_NAME,
-                    name: 'submit',
+                    name: 'verify',
                     authorization: [{
-                        actor: config.ACCOUNT_NAME,
+                        actor: config.EXPERT_ACCOUNT_NAME_1,
                         permission: 'active'
                     }],
                     data: {
-                        expert: config.EXPERT_ACCOUNT_NAME, // acccount name
+                        expert: config.EXPERT_ACCOUNT_NAME_1, // acccount name
                         id: id, // requesttable id
-                        result: '',// 1 0
+                        result: result,// 1 0
                         sample_name: sample_name,
                         sample_category: sample_category,
                         remark: remark

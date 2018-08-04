@@ -10,8 +10,9 @@
       <th>longtitude</th>
       <th>status</th>
       <th>weight</th>
+      <th>target weight</th>
     </tr>
-    <tr ng-if="row.status !== 3" ng-repeat="row in rows" >
+    <tr ng-click="goToVerify(row.id)" ng-repeat="row in rows" >
       <td>{{row.user_id}}</td>
       <td>{{row.sample_name}}</td>
       <td>{{row.sample_category}}</td>
@@ -20,6 +21,7 @@
       <td>{{row.longitude}}</td>
       <td>{{row.status}}</td>
       <td>{{row.weight}}</td>
+      <td>{{row.target_weight}}</td>
     </tr>
   </table>
 </div>

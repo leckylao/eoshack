@@ -11,8 +11,8 @@ bioApp.controller('jobsPageCtrl', function ($scope, $interval, $location) {
         });
     }, 1000, 0);
 
-    $scope.verify = function (id) {
-        $location.path('/expert/verify/id');
+    $scope.goToVerify = function (id) {
+        $location.path('/expert/verify/' + id);
     }
 });
 
@@ -39,11 +39,12 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
     myInput.addEventListener('change', sendPic, false);
     var formData = new FormData();
     $scope.fileName = null;
+    $scope.imageURL = '';
+
 
     function sendPic() {
         var file = myInput.files[0];
         formData.append('file', file);
-
 
 
         fetch(url, {
@@ -52,6 +53,7 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
         }).then(response => {
             $scope.$apply(function () {
                 $scope.fileName = url + '/' + file.name;
+                $scope.imageURL = file.name;
             });
             console.log('** here is the response ', response);
         });
@@ -62,12 +64,12 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
     $scope.categories = ['Not selected', 'bird', 'cat', 'dog', 'mouse'];
 
     $scope.selectedCategory = $scope.categories[0];
-    $scope.imageURL = '';
+
     $scope.name = '';
     $scope.userID = '';
 
-    $scope.longitude = '';
-    $scope.latitude = '';
+    $scope.longitude = '151.199505';
+    $scope.latitude = '-33.872791';
 
 
     $scope.submit = function () {
@@ -100,6 +102,7 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
 
 bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
 
+    var url = 'http://172.16.97.1:8000';
     $scope.id = $routeParams.id;
 
     $scope.userSampleCategory = '';
@@ -118,34 +121,38 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
     ACTIONS.getTable().then(function (result) {
         $scope.$apply(function () {
             result.rows.forEach(function (row) {
-                console.log('* got the row', row);
-                $scope.userSampleCategory = row.sample_category;
-                $scope.userSampleName = row.sample_name;
-                $scope.userSampleImage = row.images[0];
-                $scope.userSampleLong = row.longitude;
-                $scope.userSampleLat = row.latitude;
-                $scope.id = row.id;
+
+                if(row.id == $scope.id){
+                    console.log('* got the row', row);
+                    $scope.userSampleCategory = row.sample_category;
+                    $scope.userSampleName = row.sample_name;
+                    $scope.userSampleImage = row.images[0];
+                    $scope.userSampleLong = row.longitude;
+                    $scope.userSampleLat = row.latitude;
+                    $scope.id = row.id;
+
+
+                    $scope.imageUrl = url + '/' + $scope.userSampleImage;
+                    console.log('image url is', $scope.imageUrl);
+                    console.log('* the imageurl is', $scope.imageUrl);
+                    $scope.sampleName = $scope.userSampleName;
+                    $scope.categoryName = $scope.userSampleCategory;
+                }
+
+
             });
         });
 
     });
 
-    // init
-    $scope.categories = ['Not selected', 'bird', 'cat', 'dog', 'mouse'];
-    $scope.selectedCategory = $scope.categories[0];
-
-    $scope.longitude = '';
-    $scope.latitude = '';
-
-    // ACTIONS.verify($scope.id, $scope.sampleName, $scope.categoryName)
-
 
     $scope.submitVerify = function () {
-        ACTIONS.verify($scope.id, $scope.sampleName, $scope.categoryName, $scope.remark);
+        ACTIONS.verify($scope.id, ($scope.nameStatus == 1 && $scope.categoryStatus == 1) ? 1 : 0, $scope.sampleName, $scope.categoryName, $scope.remark);
+        $location.path('/expert/jobs');
     };
 
     $scope.cancelVerify = function () {
-
+        $location.path('/expert/jobs');
     };
 
 });

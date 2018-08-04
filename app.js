@@ -34,6 +34,16 @@ bioApp.controller('requestPageCtrl', function ($scope, $interval, $location) {
 });
 
 bioApp.controller('submitCtrl', function ($scope, $location) {
+
+    var myInput = document.getElementById('myFileInput');
+    myInput.addEventListener('change', sendPic, false);
+    function sendPic() {
+        var file = myInput.files[0];
+
+    }
+
+
+
     // init
     $scope.categories = ['Not selected', 'bird', 'cat', 'dog', 'mouse'];
 
@@ -48,15 +58,12 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
 
     $scope.submit = function () {
         console.log('action has been sent');
-
         console.log($scope.userID,
             $scope.longitude,
             $scope.latitude,
             $scope.name,
             $scope.selectedCategory,
             $scope.imageURL);
-
-
         ACTIONS.submit(
             $scope.userID,
             $scope.longitude,
@@ -64,9 +71,7 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
             $scope.name,
             $scope.selectedCategory,
             $scope.imageURL);
-
         $location.path('/user/requests');
-
     };
 
     $scope.cancel = function () {
@@ -77,7 +82,7 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
 
 bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
 
-    var id = $routeParams.id;
+    $scope.id = $routeParams.id;
 
     $scope.userSampleCategory = '';
     $scope.userSampleName = '';
@@ -90,10 +95,12 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
 
     $scope.sampleName = '';
     $scope.categoryName = '';
+    $scope.remark = '';
 
     ACTIONS.getTable().then(function (result) {
         $scope.$apply(function () {
             result.rows.forEach(function (row) {
+                console.log('* got the row', row);
                 $scope.userSampleCategory = row.sample_category;
                 $scope.userSampleName = row.sample_name;
                 $scope.userSampleImage = row.images[0];
@@ -112,17 +119,17 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
     $scope.longitude = '';
     $scope.latitude = '';
 
-    ACTIONS.verify($scope.id, $scope.sampleName, $scope.categoryName)
+    // ACTIONS.verify($scope.id, $scope.sampleName, $scope.categoryName)
 
-    $location.path('/user/requests');
+
 
 
     $scope.submitVerify = function () {
-
-    }
+        ACTIONS.verify($scope.id, $scope.sampleName, $scope.categoryName, $scope.remark);
+    };
 
     $scope.cancelVerify = function () {
 
-    }
+    };
 
 });

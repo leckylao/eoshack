@@ -1,5 +1,3 @@
-
-
 // configuration
 eos = Eos({
     chainId: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f', // 32 byte (64 char) hex string
@@ -51,30 +49,7 @@ var ACTIONS = {
 
 
     },
-    // you can only claim if the status is 3
-    check: function (userID) {
-        var transaction = {
-            actions: [
-                {
-                    account: config.CONTRACT_NAME,
-                    name: 'submit',
-                    authorization: [{
-                        actor: config.ACCOUNT_NAME,
-                        permission: 'active'
-                    }],
-                    data: {
-                        client:'',//account name
-                        id:'' , //request table id
 
-
-                        // to: 'initb',
-                        // quantity: '7.0000 SYS',
-                        // memo: ''
-                    }
-                }
-            ]
-        }
-    },
     verify: function (id, sample_name, sample_category, remark) {
         var transaction = {
             // ...headers,
@@ -88,15 +63,16 @@ var ACTIONS = {
                     }],
                     data: {
                         expert: config.EXPERT_ACCOUNT_NAME, // acccount name
-                        id:'', // requesttable id
-                        result:'',// 1 0
-                        sample_name:'',
-                        sample_category:'',
-                        remark: ''
+                        id: id, // requesttable id
+                        result: '',// 1 0
+                        sample_name: sample_name,
+                        sample_category: sample_category,
+                        remark: remark
                     }
                 }
             ]
         };
+        this.executeTransaction(transaction);
     },
     gettask: function () {
     },

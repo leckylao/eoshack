@@ -1,4 +1,4 @@
-<div ng-controller="submitCtrl" class="expert-page">
+<div ng-controller="verifyCtrl" class="expert-page">
   <div class="verify-page">
     <div class="user-data">
       <div class="image-container-user-data">
@@ -6,14 +6,14 @@
       </div>
       <div class="user-selected-info">
         <div class="group-elements">
-          <div class="geolocation">Location: (Longitude: 123, Latitude: 123)</div>
-
+          <div class="geolocation">Location: (Longitude: {{longitude}}, Latitude: {{latitude}})</div>
           <div class="row">
             <div class="col-xs-6">
               <div class="sample-category">Selected Category: {{userSampleCategory}}</div>
               <input type="radio" ng-model="categoryStatus" value="1"> Correct<br>
               <input type="radio" ng-model="categoryStatus" value="0"> Wrong<br>
-              <input ng-show="categoryStatus == 0" type="text" ng-model="categoryName" placeholder="write the correct category">
+              <input ng-show="categoryStatus == 0" type="text" ng-model="categoryName"
+                     placeholder="write the correct category">
             </div>
             <div class="col-xs-6">
               <div class="sample-name">Selected Name: {{userSampleName}}</div>
@@ -26,7 +26,7 @@
           <div class="row">
             <div class="col-xs-12">
               Any comment
-              <input type="text">
+              <input ng-model="remark" type="text">
 
             </div>
 

@@ -19,24 +19,27 @@ var ACTIONS = {
             // ...headers,
             actions: [
                 {
-                    account: 'hackathon111',
+                    account: 'hackathon112',
                     name: 'submit',
                     authorization: [{
                         actor: 'alice1111111',
                         permission: 'active'
                     }],
                     data: {
-                        user: userID,
-                        longitude:longitude,
-                        latitude:latitude,
-                        sample_name:sampleName,
-                        sample_category:sampleCategory,
-                        image:[image]
+                        user_id: userID,
+                        longitude: longitude,
+                        latitude: latitude,
+                        sample_name: sampleName,
+                        sample_category: sampleCategory,
+                        images: [image]
                     }
                 }
             ]
         };
         this.executeTransaction(transaction);
+
+        var result = eos.getTableRows(true, 'hackathon112', 'hackathon112', 'request','request',null, null,null, 'i64', 'primary') ;
+        console.log('the result', result);
     },
     submitAI: function () {
 
@@ -66,8 +69,10 @@ var ACTIONS = {
             ]
         }
     },
-    verify:function () {},
-    gettask: function () {},
+    verify: function () {
+    },
+    gettask: function () {
+    },
     testAction: function () {
         var transaction = {
             // ...headers,

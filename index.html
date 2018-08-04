@@ -44,16 +44,16 @@
     </div>
     <div class="form-group">
       <label for="guess-name">Guess a name</label>
-      <input id="guess-name" class="sample-input" type="text"/>
+      <input ng-model="name" id="guess-name" class="sample-input" type="text"/>
     </div>
 
     <div class="form-group">
       <label for="user-id">User ID</label>
-      <input id="user-id" class="sample-input" type="text"/>
+      <input ng-model="userID" id="user-id" class="sample-input" type="text"/>
     </div>
 
 
-    <button>submit</button>
+    <button ng-click="submit()">submit</button>
     <button>cancel</button>
   </div>
 

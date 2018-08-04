@@ -20,6 +20,7 @@ bioApp.controller('indexPageCtrl', function ($scope, $interval, $location) {
 });
 
 bioApp.controller('jobsPageCtrl', function ($scope, $interval, $location) {
+    $scope.statusNames = ['','Pending','Rejected','Confirmed'];
     var tableResult = ACTIONS.getTable();
     console.log('*** ');
     $interval(function () {
@@ -37,14 +38,17 @@ bioApp.controller('jobsPageCtrl', function ($scope, $interval, $location) {
 
 bioApp.controller('requestPageCtrl', function ($scope, $interval, $location) {
     $scope.url = 'http://172.16.97.1:8000';
-
+    $scope.statusNames = ['','Pending','Rejected','Confirmed'];
     var tableResult = ACTIONS.getTable();
     console.log('*** ');
     $interval(function () {
         result = ACTIONS.getTable();
         tableResult.then(function (result) {
-            $scope.rows = result.rows;
-            console.log(result.rows);
+            $scope.$apply(function () {
+                $scope.rows = result.rows;
+                console.log(result.rows);
+            });
+
         });
     }, 1000, 0);
 

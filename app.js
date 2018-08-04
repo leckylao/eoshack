@@ -88,6 +88,9 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
     $scope.nameStatus = 0;
     $scope.categoryStatus = 0;
 
+    $scope.sampleName = '';
+    $scope.categoryName = '';
+
     ACTIONS.getTable().then(function (result) {
         $scope.$apply(function () {
             result.rows.forEach(function (row) {
@@ -96,6 +99,7 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
                 $scope.userSampleImage = row.images[0];
                 $scope.userSampleLong = row.longitude;
                 $scope.userSampleLat = row.latitude;
+                $scope.id = row.id;
             });
         });
 
@@ -108,32 +112,17 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
     $scope.longitude = '';
     $scope.latitude = '';
 
+    ACTIONS.verify($scope.id, $scope.sampleName, $scope.categoryName)
 
-    $scope.submit = function () {
-        console.log('action has been sent');
-
-        console.log($scope.userID,
-            $scope.longitude,
-            $scope.latitude,
-            $scope.name,
-            $scope.selectedCategory,
-            $scope.imageURL);
+    $location.path('/user/requests');
 
 
-        ACTIONS.verify(
-            $scope.userID,
-            $scope.longitude,
-            $scope.latitude,
-            $scope.name,
-            $scope.selectedCategory,
-            $scope.imageURL);
+    $scope.submitVerify = function () {
 
-        $location.path('/user/requests');
+    }
 
-    };
+    $scope.cancelVerify = function () {
 
-    $scope.cancel = function () {
-        $location.path('/user/requests');
     }
 
 });

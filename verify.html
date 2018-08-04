@@ -13,13 +13,13 @@
               <div class="sample-category">Selected Category: {{userSampleCategory}}</div>
               <input type="radio" ng-model="categoryStatus" value="1"> Correct<br>
               <input type="radio" ng-model="categoryStatus" value="0"> Wrong<br>
-              <input ng-show="categoryStatus == 0" type="text" placeholder="write the correct category">
+              <input ng-show="categoryStatus == 0" type="text" ng-model="categoryName" placeholder="write the correct category">
             </div>
             <div class="col-xs-6">
               <div class="sample-name">Selected Name: {{userSampleName}}</div>
               <input type="radio" ng-model="nameStatus" value="1"> Correct<br>
               <input type="radio" ng-model="nameStatus" value="0"> Wrong<br>
-              <input ng-show="nameStatus == 0" type="text" placeholder="write the correct name">
+              <input ng-show="nameStatus == 0" type="text" ng-model="sampleName" placeholder="write the correct name">
             </div>
           </div>
 
@@ -34,8 +34,8 @@
 
         </div>
       </div>
-      <button>Submit</button>
-      <button>Cancel</button>
+      <button ng-click="submitVerify()">Submit</button>
+      <button ng-click="cancelVerify()">Cancel</button>
     </div>
   </div>
 </div>

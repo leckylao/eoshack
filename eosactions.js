@@ -3,7 +3,7 @@
 // configuration
 eos = Eos({
     chainId: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f', // 32 byte (64 char) hex string
-    keyProvider: [config.KEY], // WIF string or array of keys..
+    keyProvider: config.KEY, // WIF string or array of keys..
     httpEndpoint: 'http://172.16.97.1:8888',
     expireInSeconds: 60,
     broadcast: true,
@@ -39,6 +39,7 @@ var ACTIONS = {
                 }
             ]
         };
+        console.log('* thats the transaction object', transaction);
         this.executeTransaction(transaction);
 
         var result = eos.getTableRows(true, config.CONTRACT_NAME, config.CONTRACT_NAME, 'request', 'request', null, null, null, 'i64', 'primary');

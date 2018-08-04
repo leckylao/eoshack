@@ -68,8 +68,8 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
     $scope.name = '';
     $scope.userID = '';
 
-    $scope.longitude = '151.199505';
-    $scope.latitude = '-33.872791';
+    $scope.longitude = 151.199505;
+    $scope.latitude = -33.872791;
 
 
     $scope.submit = function () {

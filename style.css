@@ -203,4 +203,21 @@ tr:nth-child(even) {
 
 .navbar {
     z-index: 1000;
+    background-color: #09091A;
+    border: none;
+}
+.bio-style-nav{
+    background-color: #09091A;
+}
+ul {
+    font-size: 14px;
+    color: white;
+}
+
+.bio-brand {
+    color: white;
+    font-size: 25px;
+    margin-left: 60px;
+
+
 }

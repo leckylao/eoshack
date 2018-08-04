@@ -85,6 +85,8 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
     $scope.userSampleLong = '';
     $scope.userSampleLat = '';
 
+    $scope.nameStatus = 0;
+    $scope.categoryStatus = 0;
 
     ACTIONS.getTable().then(function (result) {
         $scope.$apply(function () {

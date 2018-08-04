@@ -4,5 +4,5 @@ var config = {
     EXPERT_ACCOUNT_NAME_1 : 'expert111111',
     EXPERT_ACCOUNT_NAME_2 : 'expert222222',
     EXPERT_ACCOUNT_NAME_3 : 'expert333333',
-    CONTRACT_NAME: 'hackathon222'
+    CONTRACT_NAME: 'hackathon223'
 };

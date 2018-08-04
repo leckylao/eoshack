@@ -20,7 +20,7 @@ bioApp.config(function ($routeProvider) {
                 return 'jobs.html';
             }
         })
-        .when('/user/verify', {
+        .when('/user/verify/:id', {
             templateUrl: function () {
                 return 'verify.html';
             }

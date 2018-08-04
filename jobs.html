@@ -1,0 +1,25 @@
+<div ng-controller="jobsPageCtrl">
+
+  <table class="table">
+    <tr>
+      <th>user_id</th>
+      <th>sample_name</th>
+      <th>category</th>
+      <th>image</th>
+      <th>latitude</th>
+      <th>longtitude</th>
+      <th>status</th>
+      <th>weight</th>
+    </tr>
+    <tr ng-if="row.status !== 3" ng-repeat="row in rows" >
+      <td>{{row.user_id}}</td>
+      <td>{{row.sample_name}}</td>
+      <td>{{row.sample_category}}</td>
+      <td>{{row.images[0]}}</td>
+      <td>{{row.latitude}}</td>
+      <td>{{row.longitude}}</td>
+      <td>{{row.status}}</td>
+      <td>{{row.weight}}</td>
+    </tr>
+  </table>
+</div>

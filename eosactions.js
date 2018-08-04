@@ -1,9 +1,9 @@
-// Eos = require('eosjs');
+
 
 // configuration
 eos = Eos({
     chainId: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f', // 32 byte (64 char) hex string
-    keyProvider: ['5KbYnXiRxDqaej7qP7A6Pji3ZNiwaFiYRGayGRtHLk8jTFvGCdN'], // WIF string or array of keys..
+    keyProvider: [config.KEY], // WIF string or array of keys..
     httpEndpoint: 'http://172.16.97.1:8888',
     expireInSeconds: 60,
     broadcast: true,
@@ -15,17 +15,17 @@ console.log(eos.getInfo({}));
 
 var ACTIONS = {
     getTable: function () {
-        return eos.getTableRows(true, 'hackathon114', 'hackathon114', 'request', 'request', null, null, null, 'i64', 'primary');
+        return eos.getTableRows(true, config.CONTRACT_NAME, config.CONTRACT_NAME, 'request', 'request', null, null, null, 'i64', 'primary');
     },
     submit: function (userID, longitude, latitude, sampleName, sampleCategory, image) {
         var transaction = {
             // ...headers,
             actions: [
                 {
-                    account: 'hackathon114',
+                    account: config.CONTRACT_NAME,
                     name: 'submit',
                     authorization: [{
-                        actor: 'alice1111111',
+                        actor: config.ACCOUNT_NAME,
                         permission: 'active'
                     }],
                     data: {
@@ -41,7 +41,7 @@ var ACTIONS = {
         };
         this.executeTransaction(transaction);
 
-        var result = eos.getTableRows(true, 'hackathon114', 'hackathon114', 'request', 'request', null, null, null, 'i64', 'primary');
+        var result = eos.getTableRows(true, config.CONTRACT_NAME, config.CONTRACT_NAME, 'request', 'request', null, null, null, 'i64', 'primary');
         console.log('the result', result);
     },
     submitAI: function () {
@@ -55,10 +55,10 @@ var ACTIONS = {
         var transaction = {
             actions: [
                 {
-                    account: 'hackathon114',
+                    account: config.CONTRACT_NAME,
                     name: 'submit',
                     authorization: [{
-                        actor: 'alice1111111',
+                        actor: config.ACCOUNT_NAME,
                         permission: 'active'
                     }],
                     data: {
@@ -74,19 +74,19 @@ var ACTIONS = {
             ]
         }
     },
-    verify: function () {
+    verify: function (id, sample_name, sample_category, remark) {
         var transaction = {
             // ...headers,
             actions: [
                 {
-                    account: 'hackathon114',
+                    account: config.CONTRACT_NAME,
                     name: 'submit',
                     authorization: [{
-                        actor: 'alice1111111',
+                        actor: config.ACCOUNT_NAME,
                         permission: 'active'
                     }],
                     data: {
-                        expert:'', // acccount name
+                        expert: config.EXPERT_ACCOUNT_NAME, // acccount name
                         id:'', // requesttable id
                         result:'',// 1 0
                         sample_name:'',
@@ -107,7 +107,7 @@ var ACTIONS = {
                     account: 'hackathon111',
                     name: 'hi',
                     authorization: [{
-                        actor: 'alice1111111',
+                        actor: config.ACCOUNT_NAME,
                         permission: 'active'
                     }],
                     data: {

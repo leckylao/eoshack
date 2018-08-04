@@ -3,7 +3,7 @@
   <div class="bio-table-container">
     <table class="table">
       <tr>
-        <th>ID</th>
+        <!-- <th>ID</th> -->
         <th>Name</th>
         <!--<th>category</th>-->
         <!--<th>image</th>-->
@@ -13,16 +13,16 @@
         <th>Experts</th>
         <!--<th>target weight</th>-->
       </tr>
-      <tr ng-repeat="row in rows">
-        <td>{{row.id}}</td>
-        <td>{{row.sample_name}}</td>
-        <!--<td>{{row.sample_category}}</td>-->
-        <!--<td><img ng-src="{{url}}/{{row.images[0]}}" width="100" height="100"/></td>-->
-        <!--<td>{{row.latitude}}</td>-->
-        <!--<td>{{row.longitude}}</td>-->
-        <td>{{statusNames[row.status]}}</td>
-        <td>{{row.weight}}</td>
-        <!--<td>{{row.target_weight}}</td>-->
+      <tr ng-repeat="row in rows" ng-click="goToShow(row.id)">
+          <!-- <td>{{row.id}}</td> -->
+          <td>{{row.sample_name}}</td>
+          <!--<td>{{row.sample_category}}</td>-->
+          <!--<td><img ng-src="{{url}}/{{row.images[0]}}" width="100" height="100"/></td>-->
+          <!--<td>{{row.latitude}}</td>-->
+          <!--<td>{{row.longitude}}</td>-->
+          <td>{{statusNames[row.status]}}</td>
+          <td>{{row.weight}}</td>
+          <!--<td>{{row.target_weight}}</td>-->
       </tr>
     </table>
   </div>

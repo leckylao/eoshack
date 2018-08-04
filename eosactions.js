@@ -42,6 +42,7 @@ var ACTIONS = {
 
         var result = eos.getTableRows(true, config.CONTRACT_NAME, config.CONTRACT_NAME, 'request', 'request', null, null, null, 'i64', 'primary');
         console.log('the result', result);
+        return result;
     },
     submitAI: function () {
 
@@ -73,7 +74,7 @@ var ACTIONS = {
                 }
             ]
         };
-        this.executeTransaction(transaction);
+        return this.executeTransaction(transaction);
     },
     gettask: function () {
     },

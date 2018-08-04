@@ -1,26 +1,35 @@
 <div class="page">
   <div ng-controller="showPageCtrl" class="query-form">
-      <div class="image-box">
-        <input id="myFileInput" class="theInputFile" type="file" accept="image/*;capture=camera">
-        <i ng-show="!fileName" class="fas fa-plus"></i>
-        <img ng-if="fileName" ng-src="{{fileName}}" alt="">
-      </div>
-
-
-    <div class="form-group">
-      <label for="">Select a category</label>
-      <select class="bio-select" ng-options="category as category for category in categories" ng-model="selectedCategory"></select>
-    </div>
-    <div class="form-group">
-      <label for="guess-name">Guess a name</label>
-      <input class="bio-input" ng-model="name" id="guess-name" class="sample-input" type="text"/>
+    <div class="image-box">
+      <img ng-src="{{imageUrl}}" alt="">
     </div>
 
+    <div class="image-box">
+      <img ng-src="{{mapUrl}}" alt="">
+    </div>
 
+    <div class="form-group">
+      <strong>Id</strong>
+      <p>{{userSampleId}}</p>
+    </div>
+    <div class="form-group">
+      <strong>Category</strong>
+      <p>{{userSampleCategory}}</p>
+    </div>
+    <div class="form-group">
+      <strong>Name</strong>
+      <p>{{userSampleName}}</p>
+    </div>
+    <div class="form-group">
+      <strong>Longitude</strong>
+      <p>{{userSampleLong}}</p>
+    </div>
+    <div class="form-group">
+      <strong>Latitude</strong>
+      <p>{{userSampleLat}}</p>
+    </div>
 
-    <button class="bio-button pull-right bio-button-ok" ng-click="submit()">Submit</button>
-    <button class="bio-button bio-button-cancel" ng-click="cancel()">cancel</button>
+    <button class="bio-button bio-button-cancel" ng-click="back()">Back</button>
   </div>
-
 
 </div>

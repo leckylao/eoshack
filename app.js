@@ -14,7 +14,6 @@ bioApp.controller('indexPageCtrl', function ($scope, $interval, $location) {
     }
 
     $scope.isActive = function (viewLocation){
-      console.log(viewLocation, $location.path());
       return ( viewLocation === $location.path() );
     }
 });
@@ -55,6 +54,10 @@ bioApp.controller('requestPageCtrl', function ($scope, $interval, $location) {
     $scope.goToSubmit = function () {
         $location.path('/user/submit');
     }
+
+    $scope.goToShow = function (id) {
+        $location.path('/user/requests/' + id);
+    }
 });
 
 bioApp.controller('submitCtrl', function ($scope, $location) {
@@ -82,15 +85,15 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
     }
 
     // init
-    $scope.categories = ['Not selected', 'Birds', 'Amphibians', 'Reptiles', 'Mammals', 'Spiders, Mites and Ticks', "Mushrooms and Lichen", "Ferns, Mosses, Palms, Pines and Allies", "Centipedes, Millipedes and Allies", "Crawling and Hopping Insects", "Flying Insects and Ants", "Snails, Slugs, Octopuses, Squid, Mussels, Oysters, Scallops and Allies", "Crabs and Worms", "Starfish, Corals, Chitons and Sponges", "Flowering Plants", "Ray-finned Fishes"];
+    $scope.categories = ['Birds', 'Amphibians', 'Reptiles', 'Mammals', 'Spiders, Mites and Ticks', "Mushrooms and Lichen", "Ferns, Mosses, Palms, Pines and Allies", "Centipedes, Millipedes and Allies", "Crawling and Hopping Insects", "Flying Insects and Ants", "Snails, Slugs, Octopuses, Squid, Mussels, Oysters, Scallops and Allies", "Crabs and Worms", "Starfish, Corals, Chitons and Sponges", "Flowering Plants", "Ray-finned Fishes"];
 
     $scope.selectedCategory = $scope.categories[0];
 
     $scope.name = '';
     $scope.userID = '';
 
-    $scope.longitude = 151.199505;
-    $scope.latitude = -33.872791;
+    $scope.longitude = "151.199505";
+    $scope.latitude = "-33.872791";
 
     $scope.cancel = function () {
         $location.path('/user/requests');
@@ -105,7 +108,7 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
             $scope.selectedCategory,
             $scope.imageURL);
 
-        ACTIONS.submit(
+        var result = ACTIONS.submit(
             $scope.userID,
             $scope.longitude,
             $scope.latitude,
@@ -113,7 +116,9 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
             $scope.selectedCategory,
             $scope.imageURL);
 
-        $location.path('/user/requests');
+        result.then(function(data){
+          $location.path('/user/requests');
+        })
     };
 
     $scope.cancel = function () {
@@ -154,6 +159,7 @@ var actions = function(scope, routeParams){
 
                 if(row.id == scope.id){
                     console.log('* got the row', row);
+                    scope.userSampleId = row.id;
                     scope.userSampleCategory = row.sample_category;
                     scope.userSampleName = row.sample_name;
                     scope.userSampleImage = row.images[0];
@@ -167,8 +173,6 @@ var actions = function(scope, routeParams){
                     scope.sampleName = scope.userSampleName;
                     scope.categoryName = scope.userSampleCategory;
                 }
-
-
             });
         });
 
@@ -179,8 +183,10 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
     actions($scope, $routeParams);
 
     $scope.submitVerify = function () {
-        ACTIONS.verify($scope.id, ($scope.nameStatus == 1 && $scope.categoryStatus == 1) ? 1 : 0, $scope.sampleName, $scope.categoryName, $scope.remark);
-        $location.path('/expert/jobs');
+        var result = ACTIONS.verify($scope.id, ($scope.nameStatus == 1 && $scope.categoryStatus == 1) ? 1 : 0, $scope.sampleName, $scope.categoryName, $scope.remark);
+        result.then(function (data){
+          $location.path('/expert/jobs');
+        })
     };
 
     $scope.cancelVerify = function () {
@@ -189,7 +195,11 @@ bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
 
 });
 
-bioApp.controller('showPageCtrl', function ($scope, $interval, $location){
+bioApp.controller('showPageCtrl', function ($scope, $location, $routeParams){
     actions($scope, $routeParams);
+    var url = 'http://172.16.97.1:8000/';
+    $scope.mapUrl = url + "map.png";
+    $scope.back = function () {
+        $location.path('/user/requests');
+    }
 });
-

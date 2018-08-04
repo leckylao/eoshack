@@ -1,5 +1,24 @@
 var bioApp = angular.module('bioApp', ['ngRoute']);
 
+bioApp.controller('indexPageCtrl', function ($scope, $interval, $location) {
+    $scope.goToProfile = function () {
+        $location.path('/user/profile/');
+    }
+
+    $scope.goToSubmit = function () {
+        $location.path('/user/submit/');
+    }
+
+    $scope.goToJobs = function () {
+        $location.path('/expert/jobs/');
+    }
+
+    $scope.isActive = function (viewLocation){
+      console.log(viewLocation, $location.path());
+      return ( viewLocation === $location.path() );
+    }
+});
+
 bioApp.controller('jobsPageCtrl', function ($scope, $interval, $location) {
     $scope.statusNames = ['','Pending','Rejected','Confirmed'];
     var tableResult = ACTIONS.getTable();

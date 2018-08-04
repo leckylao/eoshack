@@ -58,12 +58,15 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
 
     $scope.submit = function () {
         console.log('action has been sent');
+
         console.log($scope.userID,
             $scope.longitude,
             $scope.latitude,
             $scope.name,
             $scope.selectedCategory,
             $scope.imageURL);
+
+
         ACTIONS.submit(
             $scope.userID,
             $scope.longitude,
@@ -71,6 +74,7 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
             $scope.name,
             $scope.selectedCategory,
             $scope.imageURL);
+
         $location.path('/user/requests');
     };
 

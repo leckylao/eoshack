@@ -1,0 +1,46 @@
+<div ng-controller="verifyCtrl" class="expert-page">
+  <div class="verify-page">
+    <div class="user-data">
+      <div class="image-container-user-data">
+        <img src="http://172.16.97.1:8000/goat.jpg" alt="">
+      </div>
+      <div class="user-selected-info">
+        <div class="group-elements">
+          <div class="geolocation">Location: (Longitude: {{longitude}}, Latitude: {{latitude}})</div>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="sample-category">Selected Category: {{userSampleCategory}}</div>
+              <input type="radio" ng-model="categoryStatus" value="1"> Correct<br>
+              <input type="radio" ng-model="categoryStatus" value="0"> Wrong<br>
+              <input ng-show="categoryStatus == 0" type="text" ng-model="categoryName"
+                     placeholder="write the correct category">
+            </div>
+            <div class="col-xs-6">
+              <div class="sample-name">Selected Name: {{userSampleName}}</div>
+              <input type="radio" ng-model="nameStatus" value="1"> Correct<br>
+              <input type="radio" ng-model="nameStatus" value="0"> Wrong<br>
+              <input ng-show="nameStatus == 0" type="text" ng-model="sampleName" placeholder="write the correct name">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              Any comment
+              <input ng-model="remark" type="text">
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button ng-click="submitVerify()">Submit</button>
+      <button ng-click="cancelVerify()">Cancel</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+

@@ -15,12 +15,12 @@ bioApp.config(function ($routeProvider) {
                 return 'submit.html';
             }
         })
-        .when('/experts/jobs', {
+        .when('/expert/jobs', {
             templateUrl: function () {
                 return 'jobs.html';
             }
         })
-        .when('/user/verify', {
+        .when('/expert/verify/:id', {
             templateUrl: function () {
                 return 'verify.html';
             }

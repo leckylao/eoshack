@@ -1,24 +1,65 @@
 var bioApp = angular.module('bioApp', ['ngRoute']);
 
-bioApp.controller('requestPageCtrl', function ($scope, $interval, $location){
+bioApp.controller('jobsPageCtrl', function ($scope, $interval, $location) {
     var tableResult = ACTIONS.getTable();
     console.log('*** ');
     $interval(function () {
         result = ACTIONS.getTable();
-        tableResult.then(function (result){
+        tableResult.then(function (result) {
             $scope.rows = result.rows;
             console.log(result.rows);
         });
-    }, 1000,0);
+    }, 1000, 0);
+
+    $scope.verify = function (id) {
+        $location.path('/expert/verify/id');
+    }
+});
+
+
+bioApp.controller('requestPageCtrl', function ($scope, $interval, $location) {
+    var tableResult = ACTIONS.getTable();
+    console.log('*** ');
+    $interval(function () {
+        result = ACTIONS.getTable();
+        tableResult.then(function (result) {
+            $scope.rows = result.rows;
+            console.log(result.rows);
+        });
+    }, 1000, 0);
 
     $scope.goToSubmit = function () {
         $location.path('/user/submit');
     }
 });
 
-bioApp.controller('submitCtrl', function ($scope,$location) {
+bioApp.controller('submitCtrl', function ($scope, $location) {
+    var url = 'http://172.16.97.1:8000';
+    var myInput = document.getElementById('myFileInput');
+    myInput.addEventListener('change', sendPic, false);
+    var formData = new FormData();
+    $scope.fileName = null;
+
+    function sendPic() {
+        var file = myInput.files[0];
+        formData.append('file', file);
+
+
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        }).then(response => {
+            $scope.$apply(function () {
+                $scope.fileName = url + '/' + file.name;
+            });
+            console.log('** here is the response ', response);
+        });
+    }
+
+
     // init
-    $scope.categories = ['Not selected', 'Birds', 'Amphibians', 'Reptiles', 'Mammals', 'Spiders, Mites and Ticks', "Mushrooms and Lichen", "Ferns, Mosses, Palms, Pines and Allies", "Centipedes, Millipedes and Allies", "Crawling and Hopping Insects", "Flying Insects and Ants", "Snails, Slugs, Octopuses, Squid, Mussels, Oysters, Scallops and Allies", "Crabs and Worms", "Starfish, Corals, Chitons and Sponges", "Flowering Plants", "Ray-finned Fishes"];
+    $scope.categories = ['Not selected', 'bird', 'cat', 'dog', 'mouse'];
 
     $scope.selectedCategory = $scope.categories[0];
     $scope.imageURL = '';
@@ -49,8 +90,7 @@ bioApp.controller('submitCtrl', function ($scope,$location) {
             $scope.imageURL);
 
         $location.path('/user/requests');
-
-    }
+    };
 
     $scope.cancel = function () {
         $location.path('/user/requests');
@@ -65,4 +105,56 @@ bioApp.controller('profilePageCtrl', function ($scope, $interval, $location){
       $scope.data = data;
     })
   })
+});
+
+bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
+
+    $scope.id = $routeParams.id;
+
+    $scope.userSampleCategory = '';
+    $scope.userSampleName = '';
+    $scope.userSampleImage = '';
+    $scope.userSampleLong = '';
+    $scope.userSampleLat = '';
+
+    $scope.nameStatus = 0;
+    $scope.categoryStatus = 0;
+
+    $scope.sampleName = '';
+    $scope.categoryName = '';
+    $scope.remark = '';
+
+    ACTIONS.getTable().then(function (result) {
+        $scope.$apply(function () {
+            result.rows.forEach(function (row) {
+                console.log('* got the row', row);
+                $scope.userSampleCategory = row.sample_category;
+                $scope.userSampleName = row.sample_name;
+                $scope.userSampleImage = row.images[0];
+                $scope.userSampleLong = row.longitude;
+                $scope.userSampleLat = row.latitude;
+                $scope.id = row.id;
+            });
+        });
+
+    });
+
+    // init
+    $scope.categories = ['Not selected', 'bird', 'cat', 'dog', 'mouse'];
+    $scope.selectedCategory = $scope.categories[0];
+
+    $scope.longitude = '';
+    $scope.latitude = '';
+
+    // ACTIONS.verify($scope.id, $scope.sampleName, $scope.categoryName)
+
+
+    $scope.submitVerify = function () {
+        ACTIONS.verify($scope.id, $scope.sampleName, $scope.categoryName, $scope.remark);
+    };
+
+    $scope.cancelVerify = function () {
+
+    };
+
 });

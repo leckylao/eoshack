@@ -18,7 +18,7 @@ bioApp.controller('requestPageCtrl', function ($scope, $interval, $location){
 
 bioApp.controller('submitCtrl', function ($scope,$location) {
     // init
-    $scope.categories = ['Not selected', 'bird', 'cat', 'dog', 'mouse'];
+    $scope.categories = ['Not selected', 'Birds', 'Amphibians', 'Reptiles', 'Mammals', 'Spiders, Mites and Ticks', "Mushrooms and Lichen", "Ferns, Mosses, Palms, Pines and Allies", "Centipedes, Millipedes and Allies", "Crawling and Hopping Insects", "Flying Insects and Ants", "Snails, Slugs, Octopuses, Squid, Mussels, Oysters, Scallops and Allies", "Crabs and Worms", "Starfish, Corals, Chitons and Sponges", "Flowering Plants", "Ray-finned Fishes"];
 
     $scope.selectedCategory = $scope.categories[0];
     $scope.imageURL = '';

@@ -14,8 +14,55 @@ eos = Eos({
 console.log(eos.getInfo({}));
 
 var actions = {
-    queryForSpecious: function (userID, speciousName, geoInfo) {
+    submitEx: function (userID, geoLon, geoLat, name, category, picturePass, geoInfo) {
+        var transaction = {
+            // ...headers,
+            actions: [
+                {
+                    account: 'hackathon111',
+                    name: 'submit',
+                    authorization: [{
+                        actor: 'alice1111111',
+                        permission: 'active'
+                    }],
+                    data: {
+                        user: userID,
+                        longtitude: geoLon,
+                        latitude:
+                        // to: 'initb',
+                        // quantity: '7.0000 SYS',
+                        // memo: ''
+                    }
+                }
+            ]
+        };
+    },
+    submitAI: function () {
 
+        // mockAI
+
+    },
+    claim: function (userID) {
+        var transaction = {
+            actions: [
+                {
+                    account: 'hackathon111',
+                    name: 'submit',
+                    authorization: [{
+                        actor: 'alice1111111',
+                        permission: 'active'
+                    }],
+                    data: {
+                        user: userID,
+                        longtitude: geoLon,
+                        latt
+                        // to: 'initb',
+                        // quantity: '7.0000 SYS',
+                        // memo: ''
+                    }
+                }
+            ]
+        }
     },
     testAction: function () {
         var transaction = {

@@ -38,7 +38,7 @@ var ACTIONS = {
         };
         this.executeTransaction(transaction);
 
-        var result = eos.getTableRows(true, 'hackathon112', 'hackathon112', 'request','request',null, null,null, 'i64', 'primary') ;
+        var result = eos.getTableRows(true, 'hackathon112', 'hackathon112', 'request', 'request', null, null, null, 'i64', 'primary');
         console.log('the result', result);
     },
     submitAI: function () {

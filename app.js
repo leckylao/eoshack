@@ -1,6 +1,22 @@
 var bioApp = angular.module('bioApp', ['ngRoute']);
 
-bioApp.controller('submitCtrl', function ($scope) {
+bioApp.controller('requestPageCtrl', function ($scope, $interval, $location){
+    var tableResult = ACTIONS.getTable();
+    console.log('*** ');
+    $interval(function () {
+        result = ACTIONS.getTable();
+        tableResult.then(function (result){
+            $scope.rows = result.rows;
+            console.log(result.rows);
+        });
+    }, 1000,0);
+
+    $scope.goToSubmit = function () {
+        $location.path('/user/submit');
+    }
+});
+
+bioApp.controller('submitCtrl', function ($scope,$location) {
     // init
     $scope.categories = ['Not selected', 'bird', 'cat', 'dog', 'mouse'];
 
@@ -31,6 +47,13 @@ bioApp.controller('submitCtrl', function ($scope) {
             $scope.name,
             $scope.selectedCategory,
             $scope.imageURL);
+
+        $location.path('/user/requests');
+
+    }
+
+    $scope.cancel = function () {
+        $location.path('/user/requests');
     }
 
 });

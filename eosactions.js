@@ -14,12 +14,15 @@ eos = Eos({
 console.log(eos.getInfo({}));
 
 var ACTIONS = {
+    getTable: function () {
+        return eos.getTableRows(true, 'hackathon114', 'hackathon114', 'request', 'request', null, null, null, 'i64', 'primary');
+    },
     submit: function (userID, longitude, latitude, sampleName, sampleCategory, image) {
         var transaction = {
             // ...headers,
             actions: [
                 {
-                    account: 'hackathon112',
+                    account: 'hackathon114',
                     name: 'submit',
                     authorization: [{
                         actor: 'alice1111111',
@@ -38,29 +41,31 @@ var ACTIONS = {
         };
         this.executeTransaction(transaction);
 
-        var result = eos.getTableRows(true, 'hackathon112', 'hackathon112', 'request', 'request', null, null, null, 'i64', 'primary');
+        var result = eos.getTableRows(true, 'hackathon114', 'hackathon114', 'request', 'request', null, null, null, 'i64', 'primary');
         console.log('the result', result);
     },
     submitAI: function () {
 
         // mockAI
 
+
     },
-    // checks the result for all requests
+    // you can only claim if the status is 3
     check: function (userID) {
         var transaction = {
             actions: [
                 {
-                    account: 'hackathon111',
+                    account: 'hackathon114',
                     name: 'submit',
                     authorization: [{
                         actor: 'alice1111111',
                         permission: 'active'
                     }],
                     data: {
-                        user: userID,
-                        longtitude: geoLon,
-                        latt
+                        client:'',//account name
+                        id:'' , //request table id
+
+
                         // to: 'initb',
                         // quantity: '7.0000 SYS',
                         // memo: ''
@@ -70,6 +75,27 @@ var ACTIONS = {
         }
     },
     verify: function () {
+        var transaction = {
+            // ...headers,
+            actions: [
+                {
+                    account: 'hackathon114',
+                    name: 'submit',
+                    authorization: [{
+                        actor: 'alice1111111',
+                        permission: 'active'
+                    }],
+                    data: {
+                        expert:'', // acccount name
+                        id:'', // requesttable id
+                        result:'',// 1 0
+                        sample_name:'',
+                        sample_category:'',
+                        remark: ''
+                    }
+                }
+            ]
+        };
     },
     gettask: function () {
     },

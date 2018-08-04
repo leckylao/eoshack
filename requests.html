@@ -1,0 +1,70 @@
+<div ng-controller="requestPageCtrl">
+
+  <table class="table">
+    <tr>
+      <th>user_id</th>
+      <th>sample_name</th>
+      <th>category</th>
+      <th>image</th>
+      <th>latitude</th>
+      <th>latitude</th>
+      <th>status</th>
+      <th>weight</th>
+    </tr>
+    <tr ng-repeat="row in rows">
+      <td>{{row.user_id}}</td>
+      <td>{{row.sample_name}}</td>
+      <td>{{row.sample_category}}</td>
+      <td>{{row.images[0]}}</td>
+      <td>{{row.latitude}}</td>
+      <td>{{row.latitude}}</td>
+      <td>{{row.status}}</td>
+      <td>{{row.weight}}</td>
+    </tr>
+  </table>
+  <buttom ng-click="goToSubmit()">submit a request</buttom>
+</div>
+
+<!--:-->
+<!--assigned_expert_num-->
+<!--:-->
+<!--3-->
+<!--assigned_experts-->
+<!--:-->
+<!--(4) ["expert222222", "expert333333", "expert444444", "expert555555"]-->
+<!--id-->
+<!--:-->
+<!--0-->
+<!--images-->
+<!--:-->
+<!--["aa"]-->
+<!--latitude-->
+<!--:-->
+<!--""-->
+<!--longitude-->
+<!--:-->
+<!--""-->
+<!--processed_expert_num-->
+<!--:-->
+<!--1-->
+<!--processed_experts-->
+<!--:-->
+<!--["expert111111"]-->
+<!--sample_category-->
+<!--:-->
+<!--"test_category"-->
+<!--sample_name-->
+<!--:-->
+<!--"test_name"-->
+<!--status-->
+<!--:-->
+<!--1-->
+<!--target_weight-->
+<!--:-->
+<!--3-->
+<!--user_id-->
+<!--:-->
+<!--"alice1111111"-->
+<!--weight-->
+<!--:-->
+<!--1-->

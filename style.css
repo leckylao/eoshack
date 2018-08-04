@@ -1,4 +1,4 @@
-body,html{
+body, html {
     width: 100%;
 }
 
@@ -21,9 +21,7 @@ body,html{
     margin: auto;
 }
 
-
-
-.image-array{
+.image-array {
     width: 100%;
     padding: 5px;
     background-color: yellow;
@@ -41,8 +39,7 @@ body,html{
     float: left;
 }
 
-
-.image-box i{
+.image-box i {
     font-size: 50px;
     line-height: 50px;
     position: absolute;
@@ -51,6 +48,7 @@ body,html{
     margin-top: -25px;
     margin-left: -20px;
 }
+
 .select-category {
     width: 100%;
     margin-bottom: 15px;
@@ -59,3 +57,11 @@ body,html{
 .sample-input {
     /*margin: 5px 0px 5px 0px;*/
 }
+
+/*td {*/
+    /*padding: 5px;*/
+    /*border: 1px solid black;*/
+/*}*/
+/*th {*/
+    /*border: 1px solid black;*/
+/*}*/

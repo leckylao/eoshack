@@ -21,7 +21,9 @@
 <div class="nav-bar">
   Bio Coin
 </div>
+<div class="container">
 <ng-view ng-app="bioApp"></ng-view>
+</div>
 
 <script src="config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.0/lib/eos.min.js"
@@ -29,21 +31,12 @@
         crossorigin="anonymous"></script>
 
 <script src="eosactions.js"></script>
-<script>
-    // eos = Eos({
-    //     chainId: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f', // 32 byte (64 char) hex string
-    //     keyProvider: ['5KbYnXiRxDqaej7qP7A6Pji3ZNiwaFiYRGayGRtHLk8jTFvGCdN'], // WIF string or array of keys..
-    //     httpEndpoint: 'http://172.16.97.1:8888',
-    //     expireInSeconds: 60,
-    //     broadcast: true,
-    //     verbose: false, // API activity
-    //     sign: false
-    // });
-    //
 
-</script>
-
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script src="/node_modules/angular/angular.js"></script>
 <script src="/node_modules/angular-route/angular-route.min.js"></script>
@@ -51,9 +44,6 @@
 <script src="route.js"></script>
 
 <script src="upload.js"></script>
-
-
-
 </body>
 
 </html>

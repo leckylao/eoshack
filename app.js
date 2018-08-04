@@ -16,8 +16,9 @@ bioApp.controller('jobsPageCtrl', function ($scope, $interval, $location) {
     }
 });
 
-
 bioApp.controller('requestPageCtrl', function ($scope, $interval, $location) {
+    $scope.url = 'http://172.16.97.1:8000';
+
     var tableResult = ACTIONS.getTable();
     console.log('*** ');
     $interval(function () {
@@ -41,11 +42,9 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
     $scope.fileName = null;
     $scope.imageURL = '';
 
-
     function sendPic() {
         var file = myInput.files[0];
         formData.append('file', file);
-
 
         fetch(url, {
             method: 'POST',
@@ -59,9 +58,8 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
         });
     }
 
-
     // init
-    $scope.categories = ['Not selected', 'bird', 'cat', 'dog', 'mouse'];
+    $scope.categories = ['Not selected', 'Birds', 'Amphibians', 'Reptiles', 'Mammals', 'Spiders, Mites and Ticks', "Mushrooms and Lichen", "Ferns, Mosses, Palms, Pines and Allies", "Centipedes, Millipedes and Allies", "Crawling and Hopping Insects", "Flying Insects and Ants", "Snails, Slugs, Octopuses, Squid, Mussels, Oysters, Scallops and Allies", "Crabs and Worms", "Starfish, Corals, Chitons and Sponges", "Flowering Plants", "Ray-finned Fishes"];
 
     $scope.selectedCategory = $scope.categories[0];
 
@@ -70,7 +68,6 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
 
     $scope.longitude = 151.199505;
     $scope.latitude = -33.872791;
-
 
     $scope.submit = function () {
         console.log('action has been sent');
@@ -81,7 +78,6 @@ bioApp.controller('submitCtrl', function ($scope, $location) {
             $scope.name,
             $scope.selectedCategory,
             $scope.imageURL);
-
 
         ACTIONS.submit(
             $scope.userID,

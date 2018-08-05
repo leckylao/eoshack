@@ -6,5 +6,5 @@ var config = {
     EXPERT_ACCOUNT_NAME_3 : 'expert333333',
     CONTRACT_NAME: 'hackathon333',
 
-    ACTIVE_EXPERT : this.EXPERT_ACCOUNT_NAME_1,
+    ACTIVE_EXPERT : 'expert111111',
 };

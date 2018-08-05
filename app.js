@@ -182,6 +182,9 @@ var actions = function(scope, routeParams){
 bioApp.controller('verifyCtrl', function ($scope, $location, $routeParams) {
     actions($scope, $routeParams);
 
+    var url = 'http://172.16.97.1:8000/';
+    $scope.mapUrl = url + "map.png";
+
     $scope.submitVerify = function () {
         var result = ACTIONS.verify($scope.id, ($scope.nameStatus == 1 && $scope.categoryStatus == 1) ? 1 : 0, $scope.sampleName, $scope.categoryName, $scope.remark);
         result.then(function (data){

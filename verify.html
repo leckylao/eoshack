@@ -1,9 +1,14 @@
 <div ng-controller="verifyCtrl" class="expert-page">
   <div class="verify-page">
     <div class="user-data">
-      <div class="image-container-user-data">
+      <div class="image-box map">
         <img ng-src="{{imageUrl}}" alt="">
       </div>
+
+      <div class="image-box map">
+        <img ng-src="{{mapUrl}}" alt="">
+      </div>
+
       <div class="user-selected-info">
         <div class="group-elements">
           <div class="geolocation">Location: (Longitude: {{longitude}}, Latitude: {{latitude}})</div>

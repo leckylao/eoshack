@@ -27,7 +27,7 @@ var ACTIONS = {
                         permission: 'active'
                     }],
                     data: {
-                        user_id: userID,
+                        user_id: config.ACCOUNT_NAME,
                         longitude: longitude,
                         latitude: latitude,
                         sample_name: sampleName,

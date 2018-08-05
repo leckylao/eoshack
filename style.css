@@ -54,6 +54,10 @@ body, html {
 
 }
 
+.left-margin{
+    margin-left: 10px;
+}
+
 .bio-input {
     width: 100%;
     height: 40px;
@@ -186,15 +190,21 @@ table {
 
 table, th, td {
     /*border: 1px solid #C0C0C8;*/
+
 }
 td {
-    font-size: 14px;
+    font-size: 18px;
+    /*color: white;*/
+    vertical-align: middle !important;
+}
+tr{
     color: white;
 }
-
 tr:nth-child(even) {
     background-color: #5DB7D6;
+    color: #09091A;
 }
+
 
 .request-page{
     width: 100%;

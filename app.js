@@ -13,6 +13,10 @@ bioApp.controller('indexPageCtrl', function ($scope, $interval, $location) {
         $location.path('/expert/jobs/');
     }
 
+    $scope.goToLeaderboard = function () {
+        $location.path('/user/leaderboard/');
+    }
+
     $scope.isActive = function (viewLocation){
       return ( viewLocation === $location.path() );
     }

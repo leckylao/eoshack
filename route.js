@@ -35,6 +35,11 @@ bioApp.config(function ($routeProvider) {
                 return 'profile.html';
             }
         })
+        .when('/user/leaderboard', {
+            templateUrl: function () {
+                return 'leaderboard.html';
+            }
+        })
         .otherwise({
             redirectTo: '/'
         });

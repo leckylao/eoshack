@@ -53,6 +53,7 @@ var ACTIONS = {
 
     verify: function (id, result, sample_name, sample_category, remark) {
         console.log('*verification test', id, result, sample_name, sample_category, remark);
+        console.log(config.ACTIVE_EXPERT);
         var transaction = {
             // ...headers,
             actions: [

@@ -21,12 +21,12 @@ bioApp.controller('indexPageCtrl', function ($scope, $interval, $location) {
 bioApp.controller('jobsPageCtrl', function ($scope, $interval, $location) {
     $scope.statusNames = ['','Pending','Rejected','Confirmed'];
     var tableResult = ACTIONS.getTable();
-    console.log('*** ');
+
     $interval(function () {
         result = ACTIONS.getTable();
         tableResult.then(function (result) {
             $scope.rows = result.rows;
-            console.log(result.rows);
+            // console.log(result.rows);
         });
     }, 1000, 0);
 
